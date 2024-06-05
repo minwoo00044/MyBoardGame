@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,11 @@ public class GameStarter : MonoBehaviourPunCallbacks
     }
     private void Match()
     {
-        PhotonNetwork.JoinRandomOrCreateRoom();
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.IsVisible = true;
+        roomOptions.IsOpen = true;
+        roomOptions.MaxPlayers = 4;
+        PhotonNetwork.JoinRandomOrCreateRoom(null, 0, MatchmakingMode.FillRoom, null, null, "room", roomOptions);
     }
     public override void OnJoinedRoom()
     {
