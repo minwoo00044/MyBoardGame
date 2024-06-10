@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class NetworkManager : MonoBehaviourPunCallbacks
+public class NetworkManager :MonoBehaviourPunCallbacks
 {
     [SerializeField] TMP_Text waitText;
 
@@ -14,7 +14,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         WaitTxtChange(PhotonNetwork.CurrentRoom.PlayerCount);
     }
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         if (PhotonNetwork.CurrentRoom.PlayerCount == 4)
         {
@@ -22,7 +22,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
         WaitTxtChange(PhotonNetwork.CurrentRoom.PlayerCount);
     }
-    public override void OnPlayerLeftRoom(Player otherPlayer)
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
         WaitTxtChange(PhotonNetwork.CurrentRoom.PlayerCount);
     }

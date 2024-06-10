@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : SingletonBaseMB<GameManager>
 {
-    NetworkManager networkManager;   
+    NetworkManager networkManager;
+    public GameObject waitPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,6 @@ public class GameManager : SingletonBaseMB<GameManager>
 
     public void GameStart()
     {
-
+        waitPanel.SetActive(false);
     }
 }
